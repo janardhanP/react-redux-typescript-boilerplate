@@ -6,7 +6,7 @@ import { ITodo } from "../../stores/models/Todo";
 import { deleteTodo, toggleTodo } from "../../stores/TodoStore/TodoActions";
 interface TodoListProps {}
 
-export const selectTodoStore = (state: any) => ({
+export const getTodoListProps = (state: any) => ({
   todos: state.todoStore.todos,
   filter: state.todoStore.filter,
   loading: state.todoStore.loading
@@ -14,7 +14,7 @@ export const selectTodoStore = (state: any) => ({
 
 const TodoList = (props: TodoListProps) => {
   const dispatch = useDispatch();
-  const { filter, loading, todos } = useSelector(selectTodoStore);
+  const { filter, loading, todos } = useSelector(getTodoListProps);
   const toggleTodoWithDispatch = (todo: ITodo) => {
     dispatch(toggleTodo(todo));
   };

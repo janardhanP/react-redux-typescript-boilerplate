@@ -16,3 +16,5 @@ export class TodoModel {
     this.title = title;
   }
 }
+
+// TODO: Proposal: Shall we createTodoModel similar to this

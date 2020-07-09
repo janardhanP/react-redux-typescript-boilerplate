@@ -1,14 +1,8 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useDispatch } from "react-redux";
 
-import {
-  addTodo,
-  deleteTodo,
-  toggleTodo,
-  updateFilter
-} from "../../stores/TodoStore/TodoActions";
-import { selectTodos } from "../../stores/TodoStore/TodoSelectors";
-import { ITodo } from "../../stores/models/Todo";
+import { addTodo } from "../../stores/TodoStore/TodoActions";
+
 import TodoList from "../../components/TodoList";
 
 interface TodosRouteProps {}
@@ -39,3 +33,5 @@ const TodosRoute = () => {
 };
 
 export default TodosRoute;
+
+// TODO: Setup eslint
