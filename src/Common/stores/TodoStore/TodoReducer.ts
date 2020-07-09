@@ -27,6 +27,7 @@ export const TodoReducer = (
   state: ITodoStore = initialState,
   action: TodoActions
 ): ITodoStore => {
+  console.log("state", state);
   switch (action.type) {
     case TodoActionTypes.ADD_TODO_SUCCESS:
       return {

@@ -3,7 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button, Table } from "antd";
 
 import { ITodo } from "../../stores/models/Todo";
-import { deleteTodo, toggleTodo } from "../../stores/TodoStore/TodoActions";
+import {
+  deleteTodo,
+  toggleTodo,
+  updateFilter
+} from "../../stores/TodoStore/TodoActions";
+import TodoFooter from "../TodoFooter";
+
 interface TodoListProps {}
 
 export const getTodoListProps = (state: any) => ({
@@ -20,6 +26,9 @@ const TodoList = (props: TodoListProps) => {
   };
   const deleteTodoWithDispatch = (todo: ITodo) => {
     dispatch(deleteTodo(todo));
+  };
+  const updateFilterWithDispatch = (todo: ITodo) => {
+    dispatch(updateFilter(todo));
   };
 
   const getTodos = () => {
@@ -80,7 +89,13 @@ const TodoList = (props: TodoListProps) => {
       pagination={false}
       loading={loading}
       size="middle"
-      footer={() => <div>Footer</div>}
+      footer={() => (
+        <TodoFooter
+          todos={todos}
+          currentFilter={filter}
+          updateFilter={updateFilterWithDispatch}
+        />
+      )}
     />
   );
 };
