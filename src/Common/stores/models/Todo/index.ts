@@ -1,16 +1,18 @@
 import { v4 as uuid } from "uuid";
 
 export interface ITodo {
+  title: string;
+  order: number;
   id: number;
-  text: string;
-  checked: boolean;
+  completed: boolean;
+  url: string;
 }
 
 export class TodoModel {
   id = uuid();
-  text = "";
-  checked = false;
-  constructor(text: string) {
-    this.text = text;
+  title = "";
+  completed = false;
+  constructor(title: string) {
+    this.title = title;
   }
 }
