@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 
-import { addTodo } from "../../stores/TodoStore/TodoActions";
+import { addTodo, addTodoSuccess } from "../../stores/TodoStore/TodoActions";
 
 import TodoList from "../../components/TodoList";
 
@@ -12,7 +12,15 @@ const TodosRoute = () => {
 
   const keyHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && addTodo) {
-      dispatch(addTodo(e.currentTarget.value));
+      const todoObject = {
+        id: 3,
+        order: 3,
+        title: e.currentTarget.value,
+        url: "http://todobackend.apphb.com/todo-backend/todo/3",
+        completed: false,
+      };
+      dispatch(addTodoSuccess(todoObject));
+      //dispatch(addTodo(e.currentTarget.value));
       e.currentTarget.value = "";
     }
   };
