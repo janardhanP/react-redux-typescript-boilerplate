@@ -5,11 +5,11 @@ import {
   ToggleTodoAction,
   UpdateFilterAction,
   LoadTodosAction,
-  TodosLoadingAction
-} from "./TodoActions";
+  TodosLoadingAction,
+} from "./TodoActionTypes";
 
 import { ITodo } from "../models/Todo";
-import TodoActionTypes from "./TodoActionTypes";
+import TodoActionTypeConstants from "./TodoActionTypes";
 
 export interface ITodoStore {
   filter: string;
@@ -20,53 +20,52 @@ export interface ITodoStore {
 const initialState = {
   todos: [],
   todosLoading: false,
-  filter: "ACTIVE"
+  filter: "ACTIVE",
 };
 
 export const TodoReducer = (
   state: ITodoStore = initialState,
   action: TodoActions
 ): ITodoStore => {
-  console.log("state", state);
   switch (action.type) {
-    case TodoActionTypes.ADD_TODO_SUCCESS:
+    case TodoActionTypeConstants.ADD_TODO_SUCCESS:
       return {
         ...state,
-        todos: [...state.todos, (action as AddTodoAction).todo]
+        todos: [...state.todos, (action as AddTodoAction).todo],
       };
 
-    case TodoActionTypes.DELETE_TODO_SUCCESS:
+    case TodoActionTypeConstants.DELETE_TODO_SUCCESS:
       return {
         ...state,
         todos: state.todos.filter(
-          t => (action as DeleteTodoAction).todo.id !== t.id
-        )
+          (t) => (action as DeleteTodoAction).todo.id !== t.id
+        ),
       };
 
-    case TodoActionTypes.UPDATE_TODOS_LOADING:
+    case TodoActionTypeConstants.UPDATE_TODOS_LOADING:
       return {
         ...state,
-        todosLoading: (action as TodosLoadingAction).loading
+        todosLoading: (action as TodosLoadingAction).loading,
       };
 
-    case TodoActionTypes.TOGGLE_TODO_SUCCESS:
+    case TodoActionTypeConstants.TOGGLE_TODO_SUCCESS:
       const todo = (action as ToggleTodoAction).todo;
 
       return {
         ...state,
-        todos: state.todos.map(t => (todo.id === t.id ? todo : t))
+        todos: state.todos.map((t) => (todo.id === t.id ? todo : t)),
       };
 
-    case TodoActionTypes.UPDATE_FILTER:
+    case TodoActionTypeConstants.UPDATE_FILTER:
       return {
         ...state,
-        filter: (action as UpdateFilterAction).filter
+        filter: (action as UpdateFilterAction).filter,
       };
 
-    case TodoActionTypes.LOAD_TODOS_SUCCESS:
+    case TodoActionTypeConstants.LOAD_TODOS_SUCCESS:
       return {
         ...state,
-        todos: (action as LoadTodosAction).todos
+        todos: (action as LoadTodosAction).todos,
       };
 
     default:
