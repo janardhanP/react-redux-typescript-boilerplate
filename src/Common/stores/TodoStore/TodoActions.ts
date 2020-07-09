@@ -1,4 +1,4 @@
-import { ADD_TODO, REMOVE_TODO } from "./ActionTypes";
+import { ADD_TODO, REMOVE_TODO } from "./TodoActionTypes";
 
 export function addTodo(text: string) {
   return {

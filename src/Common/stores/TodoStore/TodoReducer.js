@@ -1,5 +1,5 @@
 import { TodoModel } from "../models/Todo";
-import * as ActionTypes from "./ActionTypes";
+import * as ActionTypes from "./TodoActionTypes";
 
 import { createReducer } from "../../utils/ReducerUtils";
 

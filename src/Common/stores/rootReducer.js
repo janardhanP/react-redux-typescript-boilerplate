@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import { connectRouter } from "connected-react-router";
-import TodoReducer from "./TodoStore";
+import TodoReducer from "./TodoStore/TodoReducer";
 // import RequestingReducer from "./requesting/RequestingReducer";
 // import ErrorReducer from "./error/ErrorReducer";
 // import ShowsReducer from "./shows/ShowsReducer";
